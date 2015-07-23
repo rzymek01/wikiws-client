@@ -1,11 +1,7 @@
 
 package eti.niwa.wektorianie.jaxws;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 
 @XmlRootElement(name = "processPicture", namespace = "http://wektorianie.niwa.eti/")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -16,7 +12,7 @@ public class ProcessPicture {
     private String arg0;
 
     /**
-     * 
+     *
      * @return
      *     returns String
      */
@@ -25,7 +21,7 @@ public class ProcessPicture {
     }
 
     /**
-     * 
+     *
      * @param arg0
      *     the value for the arg0 property
      */
