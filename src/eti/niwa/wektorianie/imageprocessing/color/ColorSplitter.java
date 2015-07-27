@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class ColorSplitter {
 
     public List<ColoredImage> splitImageIntoColors(final Mat mat) {
-        final List<ColoredImage> list = EnumSet.allOf(ColoredImage.Color.class).stream().map(color -> {
+        final List<ColoredImage> list = EnumSet.allOf(Color.class).stream().map(color -> {
             Mat dst = new Mat();
             Core.inRange(mat, color.getFirstScalar(), color.getSecondScalar(), dst);
             return new ColoredImage(dst, color);
