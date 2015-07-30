@@ -11,7 +11,8 @@ public enum Color {
     BLUE(0, 0, 255),
     YELLOW(255, 255, 0),
     CYAN(0, 255, 255),
-    PINK(255, 0, 255);
+    PINK(255, 0, 255),
+    WHITE(255, 255, 255);
 
     private final int R;
     private final int G;

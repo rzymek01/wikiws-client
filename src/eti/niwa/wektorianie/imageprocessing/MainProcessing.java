@@ -3,6 +3,7 @@ package eti.niwa.wektorianie.imageprocessing;
 
 import eti.niwa.wektorianie.imageprocessing.basicdetector.BasicDetectors;
 import eti.niwa.wektorianie.imageprocessing.basicdetector.CircleDetector;
+import eti.niwa.wektorianie.imageprocessing.color.Color;
 import eti.niwa.wektorianie.imageprocessing.color.ColorSplitter;
 import eti.niwa.wektorianie.util.ImageIO;
 import org.apache.commons.io.FilenameUtils;
@@ -38,7 +39,7 @@ public class MainProcessing {
 
     public void process() {
         final Mat resultMat = new Mat(originalImage.size(), originalImage.type());
-        resultMat.setTo(new Scalar(255, 255, 255));
+        resultMat.setTo(Color.WHITE.getColor());
 
         this.colorSplitter.splitImageIntoColors(this.originalImage).stream()
                 .map(coloredImage -> {

@@ -14,7 +14,10 @@ public class BasicDetectors {
     private final List<BaseBasicDetector> basicDetectors;
 
     public BasicDetectors() {
-        basicDetectors = ImmutableList.of(new CircleDetector(), new QuadrangleDetection());
+        basicDetectors = ImmutableList.of(
+                new CircleDetector(),
+                new QuadrangleDetection(),
+                new EllipseDetection());
     }
 
     @Nonnull
