@@ -2,13 +2,11 @@ package eti.niwa.wektorianie.imageprocessing;
 
 
 import eti.niwa.wektorianie.imageprocessing.basicdetector.BasicDetectors;
-import eti.niwa.wektorianie.imageprocessing.basicdetector.CircleDetector;
 import eti.niwa.wektorianie.imageprocessing.color.Color;
 import eti.niwa.wektorianie.imageprocessing.color.ColorSplitter;
 import eti.niwa.wektorianie.util.ImageIO;
 import org.apache.commons.io.FilenameUtils;
 import org.opencv.core.Mat;
-import org.opencv.core.Scalar;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

@@ -7,15 +7,15 @@ import org.opencv.core.Point;
 
 import javax.annotation.Nonnull;
 
-public class Circle implements Shape {
+public class Circle extends Shape {
 
     private final Point point;
-    private final Color color;
+
     private final int radius;
 
     public Circle(final Point point, final Color color, final int radius) {
+        super(color);
         this.point = point;
-        this.color = color;
         this.radius = radius;
     }
 

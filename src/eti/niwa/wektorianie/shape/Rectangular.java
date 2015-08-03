@@ -8,13 +8,12 @@ import org.opencv.core.Point;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class Rectangular implements Shape {
+public class Rectangular extends Shape {
 
-    private final Color color;
     private final List<Point> points;
 
     public Rectangular(Color color, List<Point> points) {
-        this.color = color;
+        super(color);
         this.points = points;
     }
 

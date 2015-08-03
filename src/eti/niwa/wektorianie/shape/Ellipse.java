@@ -8,17 +8,16 @@ import org.opencv.core.Size;
 
 import javax.annotation.Nonnull;
 
-public class Ellipse implements Shape {
+public class Ellipse extends Shape {
 
     private final Point center;
-    private final Color color;
     private final double aAxe;
     private final double bAxe;
 
 
     public Ellipse(final Color color, final Point center, double aAxe, double bAxe) {
+        super(color);
         this.center = center;
-        this.color = color;
         this.aAxe = aAxe;
         this.bAxe = bAxe;
     }

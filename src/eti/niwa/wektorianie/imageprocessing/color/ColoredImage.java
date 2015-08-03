@@ -1,9 +1,6 @@
 package eti.niwa.wektorianie.imageprocessing.color;
 
 import org.opencv.core.Mat;
-import org.opencv.core.Scalar;
-
-import java.util.function.Function;
 
 public class ColoredImage {
 

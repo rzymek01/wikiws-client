@@ -8,13 +8,12 @@ import org.opencv.core.Point;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class Diamond implements Shape {
+public class Diamond extends Shape {
 
-    private final Color color;
     private final List<Point> points;
 
     public Diamond(Color color, List<Point> points) {
-        this.color = color;
+        super(color);
         this.points = points;
     }
 
