@@ -6,7 +6,10 @@ import eti.niwa.wektorianie.imageprocessing.color.Color;
 import eti.niwa.wektorianie.imageprocessing.color.ColorSplitter;
 import eti.niwa.wektorianie.util.ImageIO;
 import org.apache.commons.io.FilenameUtils;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -36,17 +39,33 @@ public class MainProcessing {
     }
 
     public void process() {
-        final Mat resultMat = new Mat(originalImage.size(), originalImage.type());
-        resultMat.setTo(Color.WHITE.getColor());
+        Mat resultMat;
 
-        this.colorSplitter.splitImageIntoColors(this.originalImage).stream()
+        resultMat = preprocessImage(originalImage);
+        imageIO.saveNextTaggedImage(originalFilename, "preprocessing".toUpperCase(), resultMat);
+        resultMat = splitColors(resultMat);
+        imageIO.saveNextTaggedImage(originalFilename, resultMat);
+    }
+
+    private Mat preprocessImage(final Mat image) {
+        Mat result = image.clone();
+        Core.multiply(result, new Scalar(1.5, 1.5, 1.5), result);
+        return result;
+    }
+
+    private Mat splitColors(Mat image) {
+        Mat mat = new Mat(image.size(), image.type());
+        mat.setTo(Color.WHITE.getColor());
+
+        this.colorSplitter.splitImageIntoColors(image).stream()
                 .map(coloredImage -> {
                     imageIO.saveNextTaggedImage(originalFilename, coloredImage.getColor().name(), coloredImage.getImage());
                     return coloredImage;
                 })
                 .map(basicDetectors::detectBasicShapes)
                 .flatMap(Collection::stream)
-                .forEach(shape -> shape.drawOnImage(resultMat));
-        imageIO.saveNextTaggedImage(originalFilename, resultMat);
+                .forEach(shape -> shape.drawOnImage(mat));
+
+        return mat;
     }
 }
