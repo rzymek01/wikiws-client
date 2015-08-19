@@ -1,0 +1,143 @@
+<header>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Wektorianie - Client</a>
+
+        <div id="m-stats">
+          <span class="tooltipped" data-position="bottom" data-delay="50"
+                data-tooltip="# dodanych">{{countAdded}}</span> /
+          <span class="tooltipped" data-position="bottom" data-delay="50"
+                data-tooltip="# przesłanych">{{countUploaded}}</span> /
+          <span class="tooltipped" data-position="bottom" data-delay="50"
+                data-tooltip="# przetworzonych">{{countProcessed}}</span>
+        </div>
+        <ul class="right hide-on-med-and-down">
+          <!--<li><a href="#" class="btn-floating btn-large waves-effect waves-light">-->
+          <!--<i class="medium material-icons">add</i>-->
+          <!--</a></li>-->
+        </ul>
+
+        <a href="#m-add-files-box" id="m-add-files-btn" class="btn-floating waves-effect waves-light modal-trigger">
+          <i class="medium material-icons">add</i>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="row">
+    <div id="m-left-image" class="col s12 m6 l6">
+      <h5>Przesłane zdjęcie</h5>
+      <div>
+
+      </div>
+    </div>
+    <div id="m-right-image" class="col s12 m6 l6">
+      <h5>Przetworzone zdjęcie</h5>
+      <div>
+
+      </div>
+    </div>
+
+    <div id="m-queue" class="col s12 m6 l6">
+      <ul class="m-image-ul collection with-header z-depth-1">
+        <li class="collection-header"><h5>Przesłane</h5></li>
+        {{#each images as |image|}}
+          {{#unless image.processingTime}}
+            {{image-li image=image}}
+          {{/unless}}
+        {{else}}
+          <li>
+            brak zdjęć w kolejce
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div id="m-done" class="col s12 m6 l6">
+      <ul class="m-image-ul collection with-header z-depth-1">
+        <li class="collection-header"><h5>Przetworzone</h5></li>
+        {{#each images as |image|}}
+          {{#if image.processingTime}}
+            {{image-li image=image}}
+          {{/if}}
+        {{else}}
+          <li>
+            brak przetworzonych zdjęć
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+  </div>
+
+  <div id="m-add-files-box" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Wybierz pliki, które chcesz przesłać</h4>
+      <div>
+        <form id="m-files-form" action="#">
+          <div class="file-field input-field">
+            <input class="file-path validate" type="text"/>
+            <div class="btn">
+              <span>Plik(i)</span>
+              <input type="file" name="file" multiple="multiple" accept="image/*">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="preloader-wrapper">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button form="m-files-form" {{ action 'addFiles' }} class="btn waves-effect waves-light" type="submit" name="action">
+        Prześlij
+        <i class="material-icons">send</i>
+      </button>
+      <a href="#!" class="btn modal-action modal-close waves-effect">Anuluj</a>
+    </div>
+  </div>
+
+  {{outlet}}
+
+  {{!-- ember-cli-materialize modal container --}}
+  {{md-modal-container}}
+</main>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Aplikacja kliencka</h5>
+
+        <p class="grey-text text-lighten-4">została wykonana w ramach konkursu Digital Triathlon zorganizowanego przez
+          CD NIWA.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Linki</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Wektorianie - WebService</a></li>
+          <li><a class="grey-text text-lighten-3" href="http://triathlon.niwa.gda.pl">Digital Triathlon</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://os.niwa.gda.pl">WikiWS</a></li>
+          <li><a class="grey-text text-lighten-3" href="http://www.niwa.gda.pl">CD NIWA</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2015 Copyright Drużyna Wektorianie
+      <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+    </div>
+  </div>
+</footer>

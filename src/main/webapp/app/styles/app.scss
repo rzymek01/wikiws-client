@@ -1,0 +1,89 @@
+//@import 'components/color';
+//@import 'components/variables';
+//$primary-color: color('blue', 'lighten-2');
+
+$primary-color: #2196F3;
+$elBgColor:  #E3F2FD;
+// blue, 500
+
+$secondary-color: #2962FF;
+// blue, A700
+//$success-color: color("green", "base") !default;
+//$error-color: color("red", "base") !default;
+//$link-color: color("light-blue", "darken-1") !default;
+
+@import 'materialize';
+@import 'ember-cli-materialize';
+
+header {
+  $addBtnSize: 60px;
+
+  #m-add-files-btn {
+
+    position: absolute;
+    bottom: -($addBtnSize / 2);
+    right: ($addBtnSize / 2);
+    width: $addBtnSize;
+    height: $addBtnSize;
+
+    > i {
+      width: $addBtnSize;
+      height: $addBtnSize;
+      line-height: $addBtnSize;
+    }
+  }
+
+  #m-stats {
+    text-align: right;
+    margin-right: 2 * $addBtnSize;
+
+    .tooltipped {
+      cursor: help;
+    }
+  }
+}
+
+main {
+  margin-top: 10px;
+}
+
+.m-image-ul {
+  overflow: auto;
+
+  li {
+    display: block;
+    background-color: $elBgColor;
+    padding: 8px;
+    margin: 4px;
+  }
+}
+
+#m-left-image, #m-right-image {
+  min-height: 300px;
+  max-height: 600px;
+  overflow: auto;
+}
+
+// Files UI
+#m-add-files-box {
+  .preloader-wrapper {
+    $offset: 30px;
+    position: absolute;
+    top: $offset;
+    right: $offset;
+  }
+
+  .modal-footer > button {
+    margin-left: 8px;
+
+    > i {
+      vertical-align: top;
+    }
+  }
+}
+
+.file-field input.file-path {
+  width: 85%;
+  margin-left: 12px;
+}
+
